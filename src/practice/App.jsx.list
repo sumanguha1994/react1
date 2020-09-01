@@ -1,0 +1,39 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';   
+import logo from './logo.svg';
+import './App.css';
+
+const mylistnames = ['test', 'test1', 'test2', 'test3', 'test4'];
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Namelist mylist = {mylistnames}/>
+      </div>
+    )
+  }
+}
+
+function Namelist(props) 
+{
+  const mylistconst = props.mylist;
+  const listitem = mylistconst.map((lname) => 
+    <li>{lname}</li>
+  );
+  return (<div>
+    <h2>Redering List</h2>
+    <ul>{listitem}</ul>
+  </div>)
+}
+export default App;
+/*
+Lists are used to display data in an ordered format and mainly used to display 
+menus on websites. In React, Lists can be created in a similar way as we create 
+lists in JavaScript. Let us see how we transform Lists in regular JavaScript.
+
+The map() function is used for traversing the lists. In the below example, 
+the map() function takes an array of numbers and multiply their values with 5. 
+We assign the new array returned by map() to the variable multiplyNums and log it
+*/
+

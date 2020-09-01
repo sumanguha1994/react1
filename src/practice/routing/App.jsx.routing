@@ -1,0 +1,93 @@
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM, { render } from 'react-dom';   
+import logo from './logo.svg';
+import './App.css';
+import { Route, Link, BrowserRouter as Router, NavLink, Switch } from 'react-router-dom';
+
+//routes
+import Home from './Home';
+import About from './About';
+import Contact from './Contact';
+import Notfound from './Notfound';
+
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <h1>React Router Example</h1>
+          <ul>
+            <li><NavLink to="/" exact activeStyle={{color: 'red'}}>Home</NavLink></li>
+            <li><NavLink to="/about" exact activeStyle={{color: 'green'}}>About</NavLink></li>
+            <li><NavLink to="/contact" exact activeStyle={{color: 'magenta'}}>Contact</NavLink></li>
+          </ul>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/contact" component={Contact} />
+            <Route component={Notfound} />
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
+}
+/*
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <h1>React Router Example</h1>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+          </ul>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+        </div>
+      </Router>
+    );
+  }
+}
+*/
+export default App;
+/*
+Routing is a process in which a user is directed to different pages based on 
+their action or request. ReactJS Router is mainly used for developing Single 
+Page Web Applications. React Router is used to define multiple routes in the 
+application. When a user types a specific URL into the browser, and if this 
+URL path matches any 'route' inside the router file, the user will be 
+redirected to that particular route.
+
+React Router is a standard library system built on top of the React and 
+used to create routing in the React application using React Router Package. 
+It provides the synchronous URL on the browser with data that will be displayed 
+on the web page. It maintains the standard structure and behavior of  the 
+application and mainly used for developing single page web applications. 
+*/
+
+/*
+React Router plays an important role to display multiple views in a single page 
+application. Without React Router, it is not possible to display multiple views 
+in React applications. Most of the social media websites like Facebook, 
+Instagram uses React Router for rendering multiple views.
+*/
+
+/*
+In the above screen, you can see that Home component is still rendered. 
+It is because the home path is '/' and about path is '/about', 
+so you can observe that slash is common in both paths which render both components. 
+To stop this behavior, you need to use the exact prop
+*/
+
+/**
+<Link> vs <NavLink>
+The Link component allows navigating the different routes on the websites, 
+whereas NavLink component is used to add styles to the active routes.
+*/
+
+

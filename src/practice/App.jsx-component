@@ -1,0 +1,96 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';  
+import logo from './logo.svg';
+import './App.css';
+
+/*  ----Class Components----  */
+class App extends React.Component {     
+  constructor() {
+    super();
+    this.state = {
+      data: [
+        {"name": "test1"},
+        {"name": "test2"},
+        {"name": "test3"}
+      ]
+    }
+  }
+  render() {
+    return (
+      <div>
+        <StudentName />
+        <ul>
+          {this.state.data.map((sname) => <List data = {sname} />)}
+        </ul>
+      </div>
+    )
+  }  
+} 
+class StudentName extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>This is the student list</h1>
+      </div>
+    )
+  }
+}
+class List extends React.Component {
+  render() {
+    return (
+      <ul>
+        <li>{this.props.data.name}</li>
+      </ul>
+    )
+  }
+}
+export default App;
+/*
+      ----Functional Components----
+class App extends React.Component {     
+  render() {  
+    return (  
+      <div className="App">  
+        <First />
+        <Second />
+      </div>  
+    );  
+  }  
+} 
+class First extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>This is from FIRST class.</h1>
+        <p>Thi is a example of Functional Component</p>
+      </div>
+    )
+  }
+}
+class Second extends React.Component {
+  render() {
+    return (
+      <div>
+        <h2>This is from Second class.</h2>
+        <p>This is also a Functional Component example</p>
+      </div>
+    )
+  }
+}
+export default App;
+*/
+/*
+we have mainly two types of components. They are
+1.Functional Components
+2.Class Components
+*/
+
+/*
+1.function components are a way to write components that only 
+contain a render method and don't have their own state. 
+They are simply JavaScript functions that may or may not receive data as parameters.
+function WelcomeMessage(props) {  
+  return <h1>Welcome to the , {props.name}</h1>;  
+}
+*/

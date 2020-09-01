@@ -1,0 +1,57 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM, { render } from 'react-dom';   
+import logo from './logo.svg';
+import './App.css';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.callRefInput = null;
+
+    // Instead of creating refs by createRef() method, React allows a way to 
+    // create refs by passing a callback function to the ref attribute of a component. 
+    // <input type="text" ref={element => this.callRefInput = element} />
+    this.setInputRef = element => {
+      this.callRefInput = element;
+    }
+
+    this.focusRefInput = () => {
+      if(this.callRefInput)
+        this.callRefInput.focus();
+    }
+  }
+  componentDidMount() {
+    this.focusRefInput();
+  }
+  render() {
+    return (<div>
+      <h2>Callback Refs Example</h2> 
+      <input type="text" ref={this.setInputRef} />
+      <input type="button" value="Focus Input" onClick={this.focusRefInput} />
+    </div>);
+  }
+}
+
+export default App;
+/*
+we are adding a ref to store the reference to a class component.
+
+In react, there is another way to use refs that is called "callback refs" and 
+it gives more control when the refs are set and unset. Instead of creating refs 
+by createRef() method, React allows a way to create refs by passing a callback 
+function to the ref attribute of a component. It looks like the below code.
+
+<input type="text" ref={element => this.callRefInput = element} />  
+The callback function is used to store a reference to the DOM node in an 
+instance property and can be accessed elsewhere. It can be accessed as below:
+
+this.callRefInput.value  
+*/
+
+/*
+React will call the "ref" callback to store the reference to the input DOM 
+element when the component mounts, and when the component unmounts, call it 
+with null. Refs are always up-to-date before the componentDidMount or 
+componentDidUpdate fires. The callback refs pass between components is the same 
+as you can work with object refs, which is created with React.createRef().*/

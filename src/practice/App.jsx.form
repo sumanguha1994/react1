@@ -1,0 +1,105 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';  
+import logo from './logo.svg';
+import './App.css';
+
+/*  ---- uncontrolled ----
+class App extends React.Component {     
+  constructor(props) {
+    super(props);
+    this.updateSubmit = this.updateSubmit.bind(this);
+    this.input = React.createRef();
+  }
+  updateSubmit(event)
+  {
+    alert("you are successfully submitted..");
+    event.preventDefault();
+  }
+  render() {
+    return (
+      <form onSubmit={this.updateSubmit}>
+        <h1>Uncontrolled from example</h1>
+        <label>Name</label>
+        <input type="text" ref={this.input} />
+        <label>Company Name</label>
+        <input type="text" ref={this.input}/>
+        <input type="submit" value="Submit"/>
+      </form>
+    )
+  } 
+} */
+/*  ---- uncontrolled ----
+class App extends React.Component {
+  handelClick = () => {
+    const name = this._name.value;
+    alert("hello "+name);
+  }
+  render() {
+    return (
+      <form>
+        <label>Name</label>
+        <input type="text" ref={inputValue => this._name = inputValue} placeholder="enter name !!"/>
+        <button onClick={this.handelClick}>Done</button>
+      </form>
+    )
+  }
+}*/
+/*  ---- controlled from ---- */
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ""};
+    this.handelChange = this.handelChange.bind(this);
+    this.handelSubmit = this.handelSubmit.bind(this);
+  }
+  handelChange(event){
+    this.setState({value: event.target.value});
+  }
+  handelSubmit(event){
+    alert("you submit: "+this.state.value);
+    event.preventDefault();
+  }
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handelSubmit}>
+          <h1>Controlled Form Example</h1>
+          <label>
+            <input type="text" value={this.state.value} onChange={this.handelChange} />
+          </label>
+          <input type="submit" value="Submit"/>
+        </form>
+        <h1>{this.state.value}</h1>
+      </div>
+    )
+  }
+}
+export default App;
+/*
+There are mainly two types of form input in React.
+1.Uncontrolled component
+2.Controlled component
+*/
+
+/*
+1.The uncontrolled input is similar to the traditional HTML form inputs. 
+The DOM itself handles the form data. Here, the HTML elements maintain their own 
+state that will be updated when the input value changes. To write an uncontrolled component,
+you need to use a ref to get form values from the DOM. In other words, 
+there is no need to write an event handler for every state update. 
+You can use a ref to access the input field value of the form from the DOM.
+
+
+it remembers what you typed in the field. That value can be exploited by pulling it 
+using the ref keyword whenever it needs to be used. In uncontrolled inputs the value you submit is the value you get.
+*/
+
+/*2. In controlled inputs, there is at all times some sort of changes and 
+amendments going on in the field, every single character entered and even 
+something like a backspace would count as a change. The current value of the 
+input field will be a prop of the class component (usually it will live in 
+the state referred to by using this.state.varName.) as they don’t maintain 
+their internal state. There will also be a callback function 
+(like onChange, onClick, etc) that is necessary to handle the changes (in value)
+occurring in the input field, which make them controllable.*/

@@ -1,0 +1,81 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import logo from './logo.svg';
+import './App.css';
+
+class App extends React.Component {
+  render() {
+    return (
+      <div> 
+        <h1>ReactJS Props validation example</h1>  
+        {/* props validation */}
+        <table class="table table-responsive table-hover table-border">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Value</th>
+              <th>Valid</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Array</td>
+              <td>{this.props.pArray}</td>
+              <td>{this.props.pArray ? "true" : "false"}</td>
+            </tr>
+            <tr>
+              <td>Bool</td>
+              <td>{this.props.pBool ? "true" : "false"}</td>
+              <td>{this.props.pBool ? "true" : "false"}</td>
+            </tr>
+            <tr>
+              <td>Function</td>
+              <td>{this.props.pFunc(5)}</td>
+              <td>{this.props.pFunc(5) ? "true" : "false"}</td>
+            </tr>
+            <tr>
+              <td>Number</td>
+              <td>{this.props.pNum}</td>
+              <td>{this.props.pNum ? "true" : "false"}</td>
+            </tr>
+            <tr>
+              <td>Object</td>
+              <td>{this.props.propObj}</td>
+              <td>{this.props.propObj ? "true" : "false"}</td>
+            </tr>
+            <tr>
+              <td>String</td>
+              <td>{this.props.pStr}</td>
+              <td>{this.props.pStr ? "true" : "false"}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+}
+App.propTypes = {
+  pArray : PropTypes.array.isRequired,
+  pBool : PropTypes.bool.isRequired,
+  pFunc : PropTypes.func,
+  pNum : PropTypes.number,
+  pObj : PropTypes.object.isRequired,
+  pStr : PropTypes.string,
+};
+App.defaultProps = {
+  pArray: [1, 3, 5, 7, 9],
+  pBool: true,
+  pFunc: function(i){return i + 3},
+  pNum: 5,
+  pObj: {name: 'suman'},
+  pStr: "this is a string",
+};
+export default App;
+
+/*Props stand for "Properties." They are read-only components.*/
+
+/*App component which contains all the props that we need. 
+In this example, App.propTypes is used for props validation. 
+For props validation, you must have to add this line: import 
+PropTypes from 'prop-types' in App.js file*/
+

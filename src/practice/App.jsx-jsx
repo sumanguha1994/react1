@@ -1,0 +1,44 @@
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+
+class App extends React.Component {
+  render() {
+    var fs = "secondclass";
+    var st1 = {
+      fontSize: 80,  
+      fontFamily: 'Courier',  
+      color: '#003300'  
+    };
+    var i = 4;
+    return (
+      <div>
+        <h1>this is a header</h1>
+        <h1>this is another header</h1>
+        {/* this is a data-attributes example */}
+        <p data-demoattr="demo" data-pid="2">This a data-demoattr p tag</p>
+        {/* string liteal class */}
+        <h3 className="fc">{45 + 45} & specify className As String Literals</h3>
+        {/* expression class */}
+        <h3 className={fs}>This is another class & specify className As Expressions</h3>
+        {/* jsx styleing */}
+        <h3 style={st1}>This a styling in jsx.</h3>
+        {/* using ternary oparator */}
+        <h4>{i == 1 ? "yup it's 1 !!" : "nope it's not 1, it's !!"} {i}</h4>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+/*
+custom attributes, we need to use data- prefix.
+it is like in html data-attribute in previous coding..
+*/
+
+/*NOTE: JSX cannot allow to use if-else statements. 
+Instead of it, you can use conditional (ternary) expressions. 
+It can be seen in the following example.*/
+

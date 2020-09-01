@@ -1,0 +1,73 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';   
+import logo from './logo.svg';
+import './App.css';
+
+//message component
+function Message(props)
+{
+  if(props.isLoggedIn)
+    return <h1>Welcome User</h1>;
+  else
+    return <h1>Please Login</h1>;
+}
+//login component
+function Login(props)
+{
+  return (
+    <button onClick={props.clickFunc}>Login</button>
+  )
+}
+//logout component
+function Logout(props)
+{
+  return (
+    <button onClick={props.clickFunc}>Logout</button>
+  )
+}
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {isLoggedIn: false};
+    this.ifLoginChecked = this.ifLoginChecked.bind(this);
+    this.ifLogoutChecked = this.ifLogoutChecked.bind(this);
+  }
+  ifLoginChecked(event){
+    event.preventDefault();
+    this.setState({isLoggedIn: true});
+  }
+  ifLogoutChecked(event){
+    event.preventDefault();
+    this.setState({isLoggedIn: false});
+  }
+  render() {
+    return (
+      <div>
+        <Message isLoggedIn = {this.state.isLoggedIn} />
+        {
+          (this.state.isLoggedIn) ? (
+            <Logout clickFunc = {this.ifLogoutChecked} />
+          ) : (
+            <Login clickFunc = {this.ifLoginChecked} />
+          )
+        }
+      </div>
+    )
+  }
+}
+export default App;
+/*
+an example of handling a login/logout button. The login and logout buttons will be separate components. 
+If a user logged in, render the logout component to display the logout button. If a user not logged in, 
+render the login component to display the login button. In React, this situation is called as conditional rendering. 
+
+There is more than one way to do conditional rendering in React. They are given below.
+1.if
+2.ternary operator
+3.logical && operator
+4.switch case operator
+5.Conditional Rendering with enums
+*/
+

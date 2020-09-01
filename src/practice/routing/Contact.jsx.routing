@@ -1,0 +1,31 @@
+import React, { Component, Fragment } from 'react';
+import { Route, Link } from 'react-router-dom';
+
+const Contacts = ({ match }) => <p>{match.params.id}</p>
+class Contact extends React.Component {
+    render() {
+        const {url} = this.props.match;
+        console.log(url);
+        return (
+            <div>
+                <h1>Welcome to Contact US</h1>
+                <strong>Select Contact ID !!</strong>
+                <ul>
+                    <li><Link to="/contact/1">Contact 1</Link></li>
+                    <li><Link to="/contact/2">Contact 2</Link></li>
+                    <li><Link to="/contact/3">Contact 3</Link></li>
+                </ul>
+                <Route path="/contact/:id" component={Contacts} />
+            </div>
+        );
+    }
+}
+export default Contact;
+/*
+we need to import the React Router component to implement the subroutes.
+
+The benefits of React Router is given below:
+1.Link uses to navigate the internal links in the application. It is similar to the anchor tag.
+2.It uses Switch feature for rendering.
+3.The Router needs only a Single Child element.
+*/

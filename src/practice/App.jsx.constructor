@@ -1,0 +1,46 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import logo from './logo.svg';
+import './App.css';
+
+class App extends Component {  
+  constructor(props){  
+    super(props);  
+    this.state = {  
+      data: 'test test'  
+    }  
+    this.handleEvent = this.handleEvent.bind(this);  
+  }  
+  handleEvent(){  
+    alert(this.state.data);
+    alert(this.props); 
+  }  
+  render() {  
+    return (  
+      <div className="App">  
+        <h2>React Constructor Example</h2>  
+        <input type ="text" value={this.state.data} />  
+        <button onClick={this.handleEvent}>Please Click</button>  
+      </div>  
+    );  
+  }  
+} 
+export default App;
+
+/*
+It used for initializing the local state of the component by assigning an object to this.state.
+It used for binding event handler methods that occur in your component.
+*/
+
+/*The concept of a constructor is the same in React. 
+The constructor in a React component is called before 
+the component is mounted. When you implement the constructor 
+for a React component, you need to call super(props) method 
+before any other statement. If you do not call super(props) method, 
+this.props will be undefined in the constructor and can lead to bugs.*/
+
+/* You cannot call setState() method directly in the constructor(). 
+If the component needs to use local state, you need directly to use 
+'this.state' to assign the initial state in the constructor. 
+The constructor only uses this.state to assign initial state, 
+and all other methods need to use set.state() method. */

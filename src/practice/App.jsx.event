@@ -1,0 +1,60 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';  
+import logo from './logo.svg';
+import './App.css';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {comname: ''};
+    this.changeText = this.changeText.bind(this);
+  }
+  changeText(event){
+    event.preventDefault();
+    this.setState({
+      comname: event.target.value
+    });
+  }
+  render() {
+    return (
+      <div>
+        <form>
+          <h1>Simple Event Example</h1>  
+          <label>Text:</label>
+          <input type="text" name="comname" id="comname" onChange={this.changeText} />
+          <br />
+        </form>
+        <h1>You entered: {this.state.comname}</h1>
+      </div>
+    )
+  }
+}
+export default App;
+/*
+Handling events with react have some syntactic differences from handling events on DOM. These are:
+1.React events are named as camelCase instead of lowercase.
+2.With JSX, a function is passed as the event handler instead of a string. 
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+<button onclick="showMessage()">  | <button onClick={showMessage}>  
+  Hello JavaTpoint                |    Hello JavaTpoint  
+</button>                         | </button>  
+/\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/
+<a href="#" onclick="console.log('You had clicked a Link.'); return false">  
+    Click_Me  
+</a>  
+-------------------------------------------------------------------------------
+function ActionLink() {  
+    function handleClick(e) {  
+        e.preventDefault();  
+        console.log('You had clicked a Link.');  
+    }  
+    return (  
+        <a href="#" onClick={handleClick}>  
+              Click_Me  
+        </a>  
+    );  
+}  
+*/
+

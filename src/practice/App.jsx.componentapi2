@@ -1,0 +1,68 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';  
+import logo from './logo.svg';
+import './App.css';
+
+class App extends Component {  
+  constructor(){  
+    super();  
+    this.state = {  
+      msg: []  
+    }  
+    this.updateSetState = this.updateSetState.bind(this); 
+    this.forceUpdateState = this.forceUpdateState.bind(this);
+    this.findDomNodeHandler1 = this.findDomNodeHandler1.bind(this);  
+    this.findDomNodeHandler2 = this.findDomNodeHandler2.bind(this);  
+  }  
+  updateSetState(){  
+    var item = "one..";
+    var myArray = this.state.msg.slice();
+        myArray.push(item);
+    this.setState({
+      msg: myArray
+    }); 
+  } 
+  forceUpdateState(){
+    this.forceUpdate();
+  }
+  findDomNodeHandler1() {  
+    var myDiv = document.getElementById('myDivOne');  
+    ReactDOM.findDOMNode(myDiv).style.color = 'red';  
+  }  
+  findDomNodeHandler2() {  
+    var myDiv = document.getElementById('myDivTwo');  
+    ReactDOM.findDOMNode(myDiv).style.color = 'blue';  
+  }  
+  render() {  
+    return (  
+      <div className="App">  
+        <h2>React component api Example</h2>  
+        <h4>{this.state.msg}</h4>
+        <button onClick={this.updateSetState}>Please Click</button>    
+
+        <h1>Example to generate random number</h1>  
+        <h3>Random number: {Math.random()}</h3>  
+        <button onClick = {this.forceUpdateState}>ForceUpdate</button>  
+
+        <h1>ReactJS Find DOM Node Example</h1>  
+        <button onClick = {this.findDomNodeHandler1}>FIND_DOM_NODE1</button>  
+        <button onClick = {this.findDomNodeHandler2}>FIND_DOM_NODE2</button>  
+        <h3 id = "myDivOne">JTP-NODE1</h3>  
+        <h3 id = "myDivTwo">JTP-NODE2</h3>  
+      </div>  
+    );  
+  }  
+} 
+export default App;
+
+/*
+you need to import this line: import ReactDOM from 'react-dom' in your App.js file.
+*/
+
+/*we are going to explain the three most important methods available in the React component API.
+  1.setState()   this.method.bind(this) is used to manually bind the setState() method.
+  2.forceUpdate()   This method allows us to update the component manually.
+  3.findDOMNode()   For DOM manipulation, you need to use ReactDOM.findDOMNode() method. 
+                    This method allows us to find or access the underlying DOM node.
+*/

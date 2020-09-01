@@ -1,0 +1,35 @@
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Header />
+        <Content />
+      </div>
+    )
+  }
+}
+
+class Header extends React.Component {
+  render(){
+    return(
+      <div>
+        <h1>This is a header.</h1>
+      </div>
+    )
+  }
+}
+class Content extends React.Component {
+  render(){
+    return (
+      <div>
+        <h2>This is a content</h2>
+        <p>This is under content</p>
+      </div>
+    )
+  }
+}
+export default App;

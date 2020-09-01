@@ -1,0 +1,55 @@
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+ReactDOM.render(<App hname = "header props"/>, document.getElementById('root'));  /* in index.js */
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {sname: "state props"}
+  }
+  render() {
+    var sp = {
+      color: 'red',
+    };
+    return (
+      <div>
+        {/* using props */}
+        <h1>this is a {this.props.hname}</h1>
+        {/* default props */}
+        <h1>this is a {this.props.dp}</h1>
+        <h2 style={sp}>{this.props.adp}</h2>
+        {/* state & props */}
+        <ST stProp = {this.state.sname} />
+      </div>
+    );
+  }
+}
+class ST extends React.Component {
+  render() {
+    var stsp = {
+      color: 'green'
+    }
+    return (
+      <div>
+        <h3>This is from ST class. An exmpl of (state props)</h3>
+        <h3 style={stsp}>Welcome to {this.props.stProp}</h3>
+      </div>
+    );
+  }
+}
+
+App.defaultProps = {
+  dp : "default props from app.jsx !!",
+  adp: "set default props directly on the component constructor."
+}
+export default App;
+
+/*Props stand for "Properties." They are read-only components.*/
+
+/*It is an object which stores the value of attributes of a tag 
+and work similar to the HTML attributes. It gives a way to pass data 
+from one component to other components. It is similar to function arguments. 
+Props are passed to the component in the same way as arguments passed in a function*/
+
