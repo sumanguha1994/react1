@@ -1,0 +1,46 @@
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM, { render } from 'react-dom';   
+import logo from './logo.svg';
+import './App.css';
+import { Route, Link, BrowserRouter as Router, NavLink, Switch } from 'react-router-dom';
+import ReactTable from 'react-table';
+import 'bootstrap/dist/css/bootstrap.min.css';  
+
+const BtnColorCtx = React.createContext("btn btn-warning");
+class App extends React.Component {
+  render() {
+    return (
+      <BtnColorCtx.Provider value="btn btn-primary">
+        <Btntools />
+      </BtnColorCtx.Provider>
+    );
+  }
+}
+function Btntools(props)
+{
+  return (
+    <div className="container">
+      <TheamBtn />
+    </div>
+  );
+}
+class TheamBtn extends React.Component {
+  static contextType = BtnColorCtx;
+  render(){
+    return(
+      <button className={this.context}>Welcome</button>
+    )
+  }
+}
+export default App;
+/*
+Context allows passing data through the component tree without passing props down manually at every level.
+
+In React application, we passed data in a top-down approach via props. 
+Sometimes it is inconvenient for certain types of props that are required 
+by many components in the React application. Context provides a way to pass 
+values between components without explicitly passing a prop through every level of the component tree. 
+*/
+
+

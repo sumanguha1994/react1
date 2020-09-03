@@ -7,24 +7,24 @@ import { Route, Link, BrowserRouter as Router, NavLink, Switch } from 'react-rou
 import ReactTable from 'react-table';
 import 'bootstrap/dist/css/bootstrap.min.css';  
 
-const useDocTitle = title => {
-  useEffect(() => {
-    document.title = title;
-  }, [title]);
-}
-function CustomeCountApp()
+function CountApp()
 {
   const [count, setCount] = useState(0);
-  const incCount = () => setCount(count + 1);
-  useDocTitle(`You clicked ${count} times`);
+
+  // Similar to componentDidMount and componentDidUpdate
+  useEffect(() => {
+    // Update the document title using the browser API  
+    document.title = `You clicked ${count} times`;
+  });
+
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={incCount}>Click me</button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
-export default CustomeCountApp;
+export default CountApp;
 /*
 Hook state is the new way of declaring a state in React app. 
 Hook uses useState() functional component for setting and retrieving state. 
